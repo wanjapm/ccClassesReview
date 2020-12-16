@@ -7,11 +7,16 @@ Class Student
 
  -- Methods
  __init__
+ __repr__
  add_grade
  get_average
+ add_attendance
  get_attendance
- print_grades
+ get_grades
 
 Class Grade
 __init__
+__repr__
 is_passing
+
+Examples of how to use the classes

@@ -4,6 +4,9 @@ class Student:
     self.year = year
     self.grades = []
     self.attendance = {}
+
+  def __repr__(self):
+    return "Student: {} Year:{}\nGrades\n{}\nAverage Score:{:2f}".format(self.name,self.year,self.get_grades(),self.get_average())
     
   def add_grade(self,grade):
     if type(grade) == Grade:
@@ -15,16 +18,17 @@ class Student:
     for grade in self.grades:
       sum += grade.score
     return sum / len(self.grades)
+
   def add_attendance(self,date,status):
     self.attendance[date] = status
 
   def get_attendance(self,date):
     return self.attendance.get(date,False)
 
-  def print_grades(self):
-    grade_str="Grades for {}:\n".format(self.name)
+  def get_grades(self):
+    grade_str=""
     for grade in self.grades:
-      grade_str+="{}:{}. Pass:{}\n".format(grade.subject,grade.score,grade.is_passing())
+      grade_str+= repr(grade)
     return grade_str
   
 
@@ -34,6 +38,10 @@ class Grade:
   def __init__(self,score,subject):
     self.score = score
     self.subject = subject
+
+  def __repr__(self):
+    return f"{self.subject}:{self.score}. Pass:{self.is_passing()}\n"
+
   def is_passing(self):
     if self.score >= self.minimum_passing:
       return True
@@ -64,8 +72,9 @@ pieter.add_attendance("01/22/2020",True)
 pieter.add_attendance("01/23/2020",True)
 pieter.add_attendance("01/24/2020",True)
 
-print(roger.print_grades())
-print(f"{roger.name} average score is: {roger.get_average():.2f}")
-
+print(roger)
+print(sandro)
+print(pieter)
+print("=====================")
 print(f"Was {roger.name} in attendance on '24 Jan 2020?' : {roger.get_attendance('01/22/2020')}")
 
