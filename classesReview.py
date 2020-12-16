@@ -6,7 +6,7 @@ class Student:
     self.attendance = {}
 
   def __repr__(self):
-    return "Student: {} Year:{}\nGrades\n{}\nAverage Score:{:2f}".format(self.name,self.year,self.get_grades(),self.get_average())
+    return "Student: {} Year:{}\nGrades\n{}Average Score:{:2f}\n".format(self.name,self.year,self.get_grades(),self.get_average())
     
   def add_grade(self,grade):
     if type(grade) == Grade:
