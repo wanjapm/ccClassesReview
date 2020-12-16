@@ -4,7 +4,6 @@ class Student:
     self.year = year
     self.grades = []
     self.attendance = {}
-    self
     
   def add_grade(self,grade):
     if type(grade) == Grade:
